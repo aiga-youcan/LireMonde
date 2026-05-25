@@ -1,0 +1,59 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "titre": "Eloquent JavaScript",
+      "auteur": "Marijn Haverbeke",
+      "genre": "Programmation",
+      "description": "Une plongée profonde dans les bases de JavaScript, du DOM, et de la programmation web moderne.",
+      "couverture": "images/1.jpg",
+      "aLire": false
+    },
+    {
+      "id": "2",
+      "titre": "L'Amica Geniale",
+      "auteur": "Elena Ferrante",
+      "genre": "Drame",
+      "description": "Le premier tome de la célèbre saga italienne qui suit l'amitié complexe de deux filles à Naples dans les années 50.",
+      "couverture": "images/2.jpg",
+      "aLire": true
+    },
+    {
+      "id": "3",
+      "titre": "The Lean Startup",
+      "auteur": "Eric Ries",
+      "genre": "Business",
+      "description": "L'approche révolutionnaire pour lancer une entreprise en ligne, optimiser l'e-commerce et tester ses idées rapidement.",
+      "couverture": "images/3.jpg",
+      "aLire": false
+    },
+    {
+      "id": "4",
+      "titre": "The Wealth of Nations",
+      "auteur": "Adam Smith",
+      "genre": "Finance",
+      "description": "L'œuvre fondatrice sur l'économie, la gestion de la richesse et les principes fondamentaux des marchés financiers.",
+      "couverture": "images/4.jpg",
+      "aLire": false
+    },
+    {
+      "id": "5",
+      "titre": "Dune",
+      "auteur": "Frank Herbert",
+      "genre": "Science-fiction",
+      "description": "Sur la planète aride d'Arrakis, unique source de l'Épice qui prolonge la vie, se joue le destin de l'univers.",
+      "couverture": "images/5.jpg",
+      "aLire": false
+    },
+    {
+      "id": "6",
+      "titre": "Steve Jobs",
+      "auteur": "Walter Isaacson",
+      "genre": "Technologie",
+      "description": "La biographie fascinante du visionnaire qui a révolutionné l'industrie technologique et le design des interfaces.",
+      "couverture": "images/6.jpg",
+      "aLire": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

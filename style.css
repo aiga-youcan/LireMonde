@@ -1,0 +1,351 @@
+/* --- ReadSphere : DAYLIGHT AURORA GLASSMORPHISM --- */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  --bg-light: #f8fafc;
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+.font-space {
+  font-family: "Space Grotesk", sans-serif;
+}
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+/* === BACKGROUND AURORA ANIMÉ CLAIR (Pure CSS) === */
+.aurora-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-light);
+}
+
+.blob {
+  position: absolute;
+  filter: blur(90px);
+  opacity: 0.6;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+/* Couleurs Pastel/Claires pour les blobs */
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.15) 0%,
+    transparent 70%
+  );
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  bottom: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.2) 0%,
+    transparent 70%
+  );
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  top: 40%;
+  left: 50%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.15) 0%,
+    transparent 70%
+  );
+  animation-delay: -10s;
+}
+
+.glass-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(5%, 5%) scale(1.05);
+  }
+  100% {
+    transform: translate(-5%, 5%) scale(0.95);
+  }
+}
+
+/* === NAVBAR GLASS CLAIR === */
+.navbar {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 10px 40px -10px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.nav-link {
+  color: var(--text-muted);
+  background: transparent;
+}
+.nav-link:hover {
+  color: var(--text-main);
+}
+.nav-link.active {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* === CARTES GÉNÉRÉES PAR JS (Override Glassmorphism Clair) === */
+#booksGrid > div,
+#aLireGrid > div {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  ) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 24px !important;
+  padding: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+#booksGrid > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+#booksGrid > div:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #fff !important;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 0 20px rgba(168, 85, 247, 0.1) !important;
+}
+#booksGrid > div:hover::before {
+  left: 150%;
+}
+
+/* === OVERRIDE DES ÉLÉMENTS JS === */
+
+/* Typographie JS */
+#booksGrid > div h3,
+#aLireGrid > div h3 {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 1.25rem !important;
+  color: #0f172a !important; /* Slate 900 */
+  letter-spacing: -0.02em !important;
+}
+#booksGrid > div p,
+#aLireGrid > div p {
+  color: #64748b !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+/* Boutons "Ajouter" / "Retirer" */
+#booksGrid button {
+  border-radius: 12px !important;
+  font-family: "Space Grotesk", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: 0.75rem !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Remplacer le Violet JS par un Violet Pastel */
+#booksGrid button[class*="bg-violet"] {
+  background: #f3e8ff !important; /* Purple 100 */
+  color: #9333ea !important; /* Purple 600 */
+  border: 1px solid rgba(147, 51, 234, 0.2) !important;
+}
+#booksGrid button[class*="bg-violet"]:hover {
+  background: #9333ea !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2) !important;
+}
+
+/* Remplacer le Rouge JS par un Rose Pastel */
+#booksGrid button[class*="bg-rose"] {
+  background: #fce7f3 !important; /* Pink 100 */
+  color: #db2777 !important; /* Pink 600 */
+  border: 1px solid rgba(219, 39, 119, 0.2) !important;
+}
+#booksGrid button[class*="bg-rose"]:hover {
+  background: #db2777 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(219, 39, 119, 0.2) !important;
+}
+
+/* Badges de Genre */
+span[class*="bg-violet-900"],
+span[class*="bg-slate-700"] {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+}
+
+/* Filtres */
+#genresContainer button {
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  font-family: "Space Grotesk", sans-serif !important;
+}
+#genresContainer button:hover {
+  color: var(--text-main) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+#genresContainer button[class*="bg-violet-600"] {
+  background: #fff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* === IMAGES === */
+.book-img {
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px !important;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#booksGrid > div:hover .book-img {
+  transform: translateY(-5px) scale(1.03);
+}
+
+/* === MODAL DETAILS === */
+#modalContent {
+  padding: 40px !important;
+  background: transparent !important;
+}
+#modalContent h2 {
+  font-family: "Space Grotesk", sans-serif !important;
+  font-size: 2rem !important;
+  margin-bottom: 10px !important;
+  color: #0f172a !important;
+}
+#modalContent p {
+  color: #64748b !important;
+}
+#modalContent img {
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* === ADMIN TABLE === */
+#adminTableBody tr {
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+#adminTableBody tr:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+#adminTableBody td {
+  color: #475569 !important;
+  padding: 1rem 1.5rem !important;
+}
+#adminTableBody button[class*="bg-violet"] {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+  border: 1px solid #bae6fd !important;
+}
+#adminTableBody button[class*="bg-violet"]:hover {
+  background: #0284c7 !important;
+  color: #fff !important;
+}
+#adminTableBody button[class*="bg-rose"] {
+  background: #ffe4e6 !important;
+  color: #e11d48 !important;
+  border: 1px solid #fecdd3 !important;
+}
+#adminTableBody button[class*="bg-rose"]:hover {
+  background: #e11d48 !important;
+  color: #fff !important;
+}
+
+/* === ANIMATIONS === */
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+.fade-in-section {
+  animation: scaleUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-scale-up {
+  animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
